@@ -1,0 +1,73 @@
+import type { SVGProps } from 'react'
+
+// Paths come from the MATMAONLINE brand kit (logos/svg, icons/svg); colour follows currentColor.
+const M =
+  'M0 100 V39 C0 14 16 0 39 0 C51 0 60 4 66 13 C73 4 82 0 95 0 C117 0 132 14 132 39 V65 H107 V42 C107 30 102 24 93 24 C84 24 79 30 79 42 V100 H54 V42 C54 30 49 24 40 24 C31 24 25 30 25 42 V100 Z M107 77 H132 V102 H107 Z'
+const A =
+  'M89 100 H65 V88 C59 97 49 102 36 102 C13 102 0 83 0 51 C0 21 15 0 38 0 C51 0 60 5 65 13 V2 H89 Z M25 51 C25 69 32 79 45 79 C58 79 65 69 65 51 C65 33 58 23 45 23 C32 23 25 33 25 51 Z'
+const T = 'M22 -29 H47 V2 H73 V25 H47 V64 C47 75 52 80 61 80 H74 V100 H58 C33 100 22 89 22 65 V25 H0 V2 H22 Z'
+const O =
+  'M47 0 C78 0 94 20 94 51 C94 83 78 102 47 102 C16 102 0 83 0 51 C0 20 16 0 47 0 Z M47 23 C32 23 25 34 25 51 C25 69 32 79 47 79 C62 79 69 69 69 51 C69 34 62 23 47 23 Z'
+const N = 'M0 100 V2 H24 V13 C31 4 40 0 53 0 C75 0 86 14 86 39 V100 H61 V44 C61 30 55 24 45 24 C33 24 25 32 25 47 V100 Z'
+const L = 'M0 -31 H25 V69 C25 77 29 81 39 81 V100 H31 C10 100 0 89 0 70 Z'
+const I = 'M0 -31 H25 V-8 H0 Z M0 2 H25 V100 H0 Z'
+const E =
+  'M95 58 H25 C27 73 35 81 49 81 C62 81 72 75 80 67 L95 82 C84 95 70 102 49 102 C18 102 0 83 0 51 C0 21 19 0 48 0 C78 0 95 20 95 49 Z M25 39 H71 C68 26 60 20 48 20 C36 20 28 26 25 39 Z'
+
+const LETTERS: [number, string][] = [
+  [0, M], [145, A], [247, T], [334, M], [479, A], [581, O], [688, N], [787, L], [838, I], [875, N], [974, E],
+]
+
+export function Wordmark(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 -31 1069 133" fill="currentColor" role="img" aria-label="Matma Online" {...props}>
+      {LETTERS.map(([x, d], i) => (
+        <path key={i} d={d} transform={`translate(${x} 0)`} fillRule="evenodd" />
+      ))}
+    </svg>
+  )
+}
+
+export function Symbol(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 132 102" fill="currentColor" aria-hidden="true" {...props}>
+      <path d={M} fillRule="evenodd" />
+    </svg>
+  )
+}
+
+export type SignName = 'plus' | 'equal' | 'infinity' | 'root' | 'pi' | 'graph'
+
+export function Sign({ name, ...props }: { name: SignName } & SVGProps<SVGSVGElement>) {
+  const stroke = { fill: 'none', stroke: 'currentColor', strokeLinejoin: 'round' as const }
+  return (
+    <svg viewBox="0 0 120 120" fill="currentColor" aria-hidden="true" {...props}>
+      {name === 'plus' && <path d="M47 10 H73 V47 H110 V73 H73 V110 H47 V73 H10 V47 H47 Z" />}
+      {name === 'equal' && (
+        <>
+          <rect x="11" y="29" width="98" height="22" />
+          <rect x="11" y="69" width="98" height="22" />
+        </>
+      )}
+      {name === 'infinity' && (
+        <path d="M60 60 C39 28 10 26 10 60 C10 94 39 92 60 60 C81 28 110 26 110 60 C110 94 81 92 60 60" strokeWidth="20" {...stroke} />
+      )}
+      {name === 'root' && <path d="M5 58 H25 L44 96 L67 23 H116" strokeWidth="19" {...stroke} />}
+      {name === 'pi' && <path d="M6 26 H114 M35 28 V94 M85 28 V76 Q85 95 105 95" strokeWidth="20" {...stroke} />}
+      {name === 'graph' && (
+        <>
+          <path d="M16 14 V103 H111 M33 79 L62 51 L78 63 L105 22" strokeWidth="13" {...stroke} />
+          <circle cx="105" cy="22" r="10" />
+        </>
+      )}
+    </svg>
+  )
+}
+
+export function PhoneIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M6.6 2.5h3.1l1.6 4.6-2.1 1.6a12 12 0 0 0 6.1 6.1l1.6-2.1 4.6 1.6v3.1a2.6 2.6 0 0 1-2.8 2.6C10.600 19.400 4.600 13.400 4 5.300a2.600 2.600 0 0 1 2.600-2.800Z" />
+    </svg>
+  )
+}

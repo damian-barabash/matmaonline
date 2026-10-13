@@ -1,0 +1,61 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/configure-pages@v5
+      - run: npm ci
+      # The site lives on its own domain (Settings → Pages → Custom domain = matmaonline.pl).
+      - run: npm run build
+        env:
+          BASE_PATH: /
+          SITE_URL: https://matmaonline.pl
+          GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+          BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }}
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+      # Tell Bing, Yandex and other IndexNow engines that the pages changed (Google does not use IndexNow).
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: public/indexnow-key.txt
+          sparse-checkout-cone-mode: false
+      - name: IndexNow
+        continue-on-error: true
+        run: |
+          KEY=$(cat public/indexnow-key.txt)
+          curl -sS -o /dev/null -w "IndexNow: %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"matmaonline.pl\",\"key\":\"$KEY\",\"keyLocation\":\"https://matmaonline.pl/$KEY.txt\",\"urlList\":[\"https://matmaonline.pl/\",\"https://matmaonline.pl/ru/\"]}"

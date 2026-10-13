@@ -1,0 +1,10 @@
+{
+  "name": "Matma Online",
+  "short_name": "Matma Online",
+  "lang": "pl",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F7F7F2",
+  "theme_color": "#32134F",
+  "icons": [{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }]
+}
