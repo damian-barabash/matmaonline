@@ -1,4 +1,4 @@
-export const PHONE_TEL = 'tel:+48690376681'
+export const WHATSAPP_URL = 'https://wa.me/48690376681'
 export const PHONE_FULL = '+48 690 376 681'
 export const PHONE_SHORT = '690 376 681'
 export const TEACHER = 'Stasia Kulik'

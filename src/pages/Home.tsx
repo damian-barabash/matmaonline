@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
-import { Sign, PhoneIcon } from '../components/Brand'
+import { Sign, WhatsAppIcon } from '../components/Brand'
 import { Hero } from '../components/Hero'
 import { LeadForm } from '../components/LeadForm'
 import { SectionView } from '../components/Sections'
 import type { Content } from '../content/types'
-import { PHONE_TEL } from '../lib/site'
+import { WHATSAPP_URL } from '../lib/site'
 
 export function Home({ c }: { c: Content }) {
   const bar = useRef<HTMLAnchorElement>(null)
@@ -32,15 +32,15 @@ export function Home({ c }: { c: Content }) {
           <Sign name="plus" className="contact__sign" />
           <h2>{c.contact.title}</h2>
           <p>{c.contact.text}</p>
-          <a className="btn btn--lg" href={PHONE_TEL}>
-            <PhoneIcon />
+          <a className="btn btn--lg" href={WHATSAPP_URL} target="_blank" rel="noopener">
+            <WhatsAppIcon />
             {c.ui.callShort}
           </a>
         </div>
         <LeadForm c={c} />
       </section>
-      <a className="callbar" href={PHONE_TEL} ref={bar}>
-        <PhoneIcon />
+      <a className="callbar" href={WHATSAPP_URL} target="_blank" rel="noopener" ref={bar}>
+        <WhatsAppIcon />
         {c.ui.callShort}
       </a>
     </>

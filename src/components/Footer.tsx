@@ -1,5 +1,5 @@
 import type { Content } from '../content/types'
-import { PATHS, PHONE_FULL, PHONE_TEL, url, type PageKey } from '../lib/site'
+import { PATHS, PHONE_FULL, WHATSAPP_URL, url, type PageKey } from '../lib/site'
 import { Wordmark } from './Brand'
 import { LangSwitch } from './Header'
 
@@ -12,7 +12,7 @@ export function Footer({ c, page }: { c: Content; page: PageKey }) {
           <p>{c.ui.footerNote}</p>
         </div>
         <div className="foot__links">
-          <a className="foot__phone" href={PHONE_TEL}>
+          <a className="foot__phone" href={WHATSAPP_URL} target="_blank" rel="noopener">
             {PHONE_FULL}
           </a>
           {c.lang === 'ru' ? (

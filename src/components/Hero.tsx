@@ -1,7 +1,7 @@
 import type { Content } from '../content/types'
 import { STICKER } from '../lib/photos'
-import { PHONE_FULL, PHONE_TEL } from '../lib/site'
-import { PhoneIcon, Sign, type SignName } from './Brand'
+import { PHONE_FULL, WHATSAPP_URL } from '../lib/site'
+import { WhatsAppIcon, Sign, type SignName } from './Brand'
 
 const POINT_SIGNS: SignName[] = ['plus', 'equal', 'graph']
 
@@ -24,11 +24,11 @@ export function Hero({ c }: { c: Content }) {
         </h1>
         <p className="hero__sub">{h.sub}</p>
         <div className="hero__cta">
-          <a className="btn btn--lg" href={PHONE_TEL}>
-            <PhoneIcon />
+          <a className="btn btn--lg" href={WHATSAPP_URL} target="_blank" rel="noopener">
+            <WhatsAppIcon />
             {c.ui.callCta}
           </a>
-          <a className="hero__phone" href={PHONE_TEL}>
+          <a className="hero__phone" href={WHATSAPP_URL} target="_blank" rel="noopener">
             {PHONE_FULL}
           </a>
         </div>

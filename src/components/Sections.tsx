@@ -1,7 +1,7 @@
 import type { Content, Section } from '../content/types'
 import { PHOTOS, PORTRAIT } from '../lib/photos'
-import { PHONE_FULL, PHONE_TEL } from '../lib/site'
-import { PhoneIcon, Sign, type SignName } from './Brand'
+import { PHONE_FULL, WHATSAPP_URL } from '../lib/site'
+import { WhatsAppIcon, Sign, type SignName } from './Brand'
 import { DemoArt } from './DemoArt'
 
 type Of<K extends Section['kind']> = Extract<Section, { kind: K }>
@@ -201,11 +201,11 @@ function Price({ s, c }: { s: Of<'price'>; c: Content }) {
             <b>{s.amount}</b>
             <span>/ {s.per}</span>
           </p>
-          <a className="btn btn--lg" href={PHONE_TEL}>
-            <PhoneIcon />
+          <a className="btn btn--lg" href={WHATSAPP_URL} target="_blank" rel="noopener">
+            <WhatsAppIcon />
             {c.ui.callCta}
           </a>
-          <a className="price__phone" href={PHONE_TEL}>
+          <a className="price__phone" href={WHATSAPP_URL} target="_blank" rel="noopener">
             {PHONE_FULL}
           </a>
         </div>
@@ -219,8 +219,8 @@ function Faq({ s, c }: { s: Of<'faq'>; c: Content }) {
     <section className="sec faq" id={s.id}>
       <div className="faq__head">
         <h2>{s.title}</h2>
-        <a className="btn" href={PHONE_TEL}>
-          <PhoneIcon />
+        <a className="btn" href={WHATSAPP_URL} target="_blank" rel="noopener">
+          <WhatsAppIcon />
           {c.ui.callShort}
         </a>
       </div>

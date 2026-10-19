@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Content, Lang } from '../content/types'
-import { PATHS, PHONE_TEL, url, type PageKey } from '../lib/site'
-import { PhoneIcon, Wordmark } from './Brand'
+import { PATHS, WHATSAPP_URL, url, type PageKey } from '../lib/site'
+import { WhatsAppIcon, Wordmark } from './Brand'
 
 export function LangSwitch({ lang, page, label }: { lang: Lang; page: PageKey; label: string }) {
   const target = page === 'privacy' ? 'privacy' : 'home'
@@ -45,8 +45,8 @@ export function Header({ c, page }: { c: Content; page: PageKey }) {
         <div className="top__side">
           {/* the Polish version does not advertise the Russian one; the switch lives on /ru/ */}
           {c.lang === 'ru' && <LangSwitch lang={c.lang} page={page} label={c.ui.langSwitch} />}
-          <a className="btn btn--sm top__call" href={PHONE_TEL}>
-            <PhoneIcon />
+          <a className="btn btn--sm top__call" href={WHATSAPP_URL} target="_blank" rel="noopener">
+            <WhatsAppIcon />
             <span>{c.ui.callShort}</span>
           </a>
           <button

@@ -1,7 +1,7 @@
 import { useId, useState, type FormEvent } from 'react'
 import type { Content } from '../content/types'
 import { isValidContact, submitLead } from '../lib/leads'
-import { PATHS, PHONE_FULL, PHONE_TEL, url } from '../lib/site'
+import { PATHS, PHONE_FULL, WHATSAPP_URL, url } from '../lib/site'
 
 type Status = 'idle' | 'sending' | 'sent' | 'failed'
 
@@ -140,7 +140,7 @@ export function LeadForm({ c }: { c: Content }) {
 
       {status === 'failed' && (
         <p className="form__failed" role="alert">
-          {c.contact.errors.send} <a href={PHONE_TEL}>{PHONE_FULL}</a>
+          {c.contact.errors.send} <a href={WHATSAPP_URL} target="_blank" rel="noopener">{PHONE_FULL}</a>
         </p>
       )}
 

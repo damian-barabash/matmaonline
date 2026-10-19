@@ -18,8 +18,8 @@ export const pl: Content = {
   ui: {
     skip: 'Przejdź do treści',
     menu: 'Menu',
-    callShort: 'Zadzwoń: 690 376 681',
-    callCta: 'Zadzwoń i ustal termin',
+    callShort: 'WhatsApp: 690 376 681',
+    callCta: 'Napisz na WhatsApp',
     langSwitch: 'Wersja językowa',
     priceTag: '80 zł / 60 min',
     footerNote: 'Indywidualne korepetycje z matematyki online dla uczniów klas 1–6 szkoły podstawowej.',
@@ -32,7 +32,7 @@ export const pl: Content = {
     h1: ['Nauczę Twoje dziecko ', 'rozumieć matematykę', '.'],
     sub: 'Wyjaśniam krok po kroku, wracam do tego, co sprawia trudność, i daję dziecku czas na własne rozwiązania. Na indywidualnych zajęciach online ćwiczymy matematykę tak, by dziecko coraz pewniej radziło sobie w szkole.',
     points: ['Zajęcia 1:1', 'Tempo dopasowane do dziecka', 'Informacja o postępach dla rodzica'],
-    callNote: 'Zadzwoń, aby omówić potrzeby dziecka i ustalić termin zajęć.',
+    callNote: 'Napisz na WhatsApp, aby omówić potrzeby dziecka i ustalić termin zajęć.',
     formLink: 'Napisz przez formularz',
     demoLink: 'Zobacz, jak tłumaczę',
     name: 'Stasia Kulik',
@@ -237,7 +237,7 @@ export const pl: Content = {
     errors: {
       contact: 'Podaj poprawny numer telefonu lub adres e-mail',
       grade: 'Wybierz klasę dziecka',
-      send: 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub zadzwoń:',
+      send: 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na WhatsApp:',
     },
     success:
       'Dziękuję! Twoje zapytanie zostało wysłane. Skontaktuję się z Tobą, aby omówić zajęcia i potwierdzić termin.',
